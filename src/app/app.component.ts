@@ -10,25 +10,30 @@ import { MyDialogComponent } from './components/my-dialog/my-dialog.component';
 })
 export class AppComponent {
   title = 'unbelievableApp';
-  animal: string;
+  email: string;
   name: string;
 
   constructor(public dialog: MatDialog) {}
 
-/*  
-  Below we are passing the clicked element as "trigger: target" to the dialog 
+/*
+  Below we are passing the clicked element as "trigger: target" to the dialog
   component so it can know the correct anchor location to open the dialog.
 */
 showDialog(evt: MouseEvent): void {
-  const target = new ElementRef(evt.currentTarget); 
+  this.dialog.closeAll();
+  const target = new ElementRef(evt.currentTarget);
   const dialogRef = this.dialog.open(MyDialogComponent, {
-    data: { trigger: target, name: this.name, animal: this.animal },
+    data: {
+      trigger: target,
+      name: this.name,
+      email: this.email
+    },
     disableClose: false,
     hasBackdrop: false
   });
   dialogRef.afterClosed().subscribe( res => {
     console.log(res);
-    this.animal = res;
+    this.email = res;
   });
 }
 }
