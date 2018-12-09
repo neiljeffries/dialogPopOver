@@ -10,7 +10,7 @@ import { MyDialogComponent } from './components/my-dialog/my-dialog.component';
 })
 export class AppComponent {
   title = 'unbelievableApp';
-  animal: string;
+  email: string;
   name: string;
 
   constructor(public dialog: MatDialog) {}
@@ -20,19 +20,20 @@ export class AppComponent {
   component so it can know the correct anchor location to open the dialog.
 */
 showDialog(evt: MouseEvent): void {
+  this.dialog.closeAll();
   const target = new ElementRef(evt.currentTarget);
   const dialogRef = this.dialog.open(MyDialogComponent, {
     data: {
       trigger: target,
       name: this.name,
-      animal: this.animal
+      email: this.email
     },
     disableClose: false,
     hasBackdrop: false
   });
   dialogRef.afterClosed().subscribe( res => {
     console.log(res);
-    this.animal = res;
+    this.email = res;
   });
 }
 }
