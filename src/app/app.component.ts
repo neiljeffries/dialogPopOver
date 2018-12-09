@@ -15,14 +15,18 @@ export class AppComponent {
 
   constructor(public dialog: MatDialog) {}
 
-/*  
-  Below we are passing the clicked element as "trigger: target" to the dialog 
+/*
+  Below we are passing the clicked element as "trigger: target" to the dialog
   component so it can know the correct anchor location to open the dialog.
 */
 showDialog(evt: MouseEvent): void {
-  const target = new ElementRef(evt.currentTarget); 
+  const target = new ElementRef(evt.currentTarget);
   const dialogRef = this.dialog.open(MyDialogComponent, {
-    data: { trigger: target, name: this.name, animal: this.animal },
+    data: {
+      trigger: target,
+      name: this.name,
+      animal: this.animal
+    },
     disableClose: false,
     hasBackdrop: false
   });

@@ -32,7 +32,7 @@ export class MyDialogComponent implements OnInit {
     this.dialogRef.close(null);
   }
 
-  configurePopOverDialog(){
+  configurePopOverDialog() {
     const matDialogConfig: MatDialogConfig = new MatDialogConfig();
     const rect = this.triggerElementRef.nativeElement.getBoundingClientRect();
     matDialogConfig.position = { left: `${rect.left}px`, top: `${rect.bottom - 50}px` };
