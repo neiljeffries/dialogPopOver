@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatSliderModule, MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatRippleModule } from '@angular/material';
+import { MatToolbarModule, MatSliderModule, MatDialogModule, MatFormFieldModule,
+  MatButtonModule, MatInputModule, MatRippleModule } from '@angular/material';
 import { MyDialogComponent } from './components/my-dialog/my-dialog.component';
 import { FormsModule } from '@angular/forms';
 

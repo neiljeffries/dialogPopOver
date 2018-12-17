@@ -3,25 +3,21 @@
   <span class="example-fill-remaining-space"></span>
   <span>Right Side</span>
 </mat-toolbar>
-<ul style="float:left">
-  <li>
+
+
     <mat-form-field>
       <input matInput [(ngModel)]="name" placeholder="What's your name?">
     </mat-form-field>
-  </li>
-  <li>
-    <button mat-raised-button (click)="showDialog($event)">Open Popover Dialog</button>
-  </li>
-  <li *ngIf="email">
-    <p>You entered: <i>{{email}}</i></p>
-  </li>
-</ul>
 
-<div style="float:right; width: 320px; margin-right: 50px">
-<ul>
-  <li>
-    <button mat-raised-button (click)="showDialog($event)">Click Me!</button>
-  </li>
-</ul>
+    <button mat-raised-button (click)="showDialog($event)">Open Popover Dialog</button>
+
+    <p>You entered: <i>{{email}}</i></p>
+
+
+
+<div style="float:left; width: 320px; margin-right: 50px">
+
+    <button mat-raised-button (click)="toggle()">{{mouseAnchor}}</button>
+
 </div>
 <router-outlet></router-outlet>
