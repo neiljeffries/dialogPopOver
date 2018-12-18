@@ -20,9 +20,11 @@ export class AppComponent {
     component so it can know the correct anchor location to open the dialog.
   */
   showDialog(event: MouseEvent): void {
+
     this.dialog.closeAll();
     const mouseCoords = [event.x, event.y];
     const target = new ElementRef(event.currentTarget);
+
     const dialogRef = this.dialog.open(MyDialogComponent, {
       data: {
         anchorMode: this.selectedMode, // or anchor: element
