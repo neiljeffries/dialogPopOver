@@ -10,7 +10,8 @@ export class AppComponent {
   title = 'unbelievableApp';
   email: string;
   name: string;
-  mouseAnchor = 'mouse';
+  selectedMode = 'mouse';
+  modes: string[] = ['mouse', 'element'];
 
   constructor(public dialog: MatDialog) { }
 
@@ -20,17 +21,17 @@ export class AppComponent {
   */
   showDialog(event: MouseEvent): void {
     this.dialog.closeAll();
-    const xy = [event.x, event.y];
+    const mouseCoords = [event.x, event.y];
     const target = new ElementRef(event.currentTarget);
     const dialogRef = this.dialog.open(MyDialogComponent, {
       data: {
-        anchor: this.mouseAnchor, // or anchor: element
-        coords: xy,
+        anchorMode: this.selectedMode, // or anchor: element
+        mouseCoords: mouseCoords,
         email: this.email,
         name: this.name,
         trigger: target
       },
-      disableClose: false,
+      disableClose: true,
       hasBackdrop: false
     });
     dialogRef.afterClosed().subscribe(res => {
@@ -39,12 +40,5 @@ export class AppComponent {
     });
   }
 
-  toggle() {
-    if (this.mouseAnchor === 'mouse') {
-      this.mouseAnchor = 'element';
-    } else {
-      this.mouseAnchor = 'mouse';
-    }
-  }
 
 }

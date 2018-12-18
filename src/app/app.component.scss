@@ -7,3 +7,21 @@ mat-slider {
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
   }
+
+  div{
+    margin:10px;
+  }
+
+  .example-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+  
+  .example-selected-value {
+    margin: 15px 0;
+  }
+

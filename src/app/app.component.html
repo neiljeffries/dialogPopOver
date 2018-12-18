@@ -4,20 +4,23 @@
   <span>Right Side</span>
 </mat-toolbar>
 
-
+<div>
     <mat-form-field>
       <input matInput [(ngModel)]="name" placeholder="What's your name?">
     </mat-form-field>
-
-    <button mat-raised-button (click)="showDialog($event)">Open Popover Dialog</button>
-
-    <p>You entered: <i>{{email}}</i></p>
-
-
-
-<div style="float:left; width: 320px; margin-right: 50px">
-
-    <button mat-raised-button (click)="toggle()">{{mouseAnchor}}</button>
-
+</div>
+<div>
+    <button mat-raised-button (click)="showDialog($event)">Enter Your Email Address!</button>
+</div>
+<div *ngIf="email">
+    <p>You entered: <i style="color:red">{{email}}</i> for your email address.</p>
+</div>
+<div>
+    <mat-radio-group class="example-radio-group" [(ngModel)]="selectedMode">
+      <mat-radio-button class="example-radio-button" *ngFor="let mode of modes" [value]="mode">
+        {{mode}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <div class="example-selected-value">Mode: {{selectedMode}}</div>
 </div>
 <router-outlet></router-outlet>
