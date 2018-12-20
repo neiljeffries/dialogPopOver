@@ -22,27 +22,28 @@ export class MyDialogComponent implements OnInit {
     this.triggerElementRef = data.trigger;
   }
 
+
   ngOnInit() {
     this.configurePopOverDialog();
   }
 
+
   configurePopOverDialog(): void {
+
     const matDialogConfig: MatDialogConfig = new MatDialogConfig();
-    matDialogConfig.width = '220px';
-    matDialogConfig.height = '320px';
 
-    if (this.data.anchorMode === 'element') {
-      const rect = this.triggerElementRef.nativeElement.getBoundingClientRect();
-      matDialogConfig.position = { left: `${rect.left}px`, top: `${rect.bottom - 50}px` };
+    switch (this.data.anchorMode) {
+      case 'element':
+        const rect = this.triggerElementRef.nativeElement.getBoundingClientRect();
+        matDialogConfig.position = { left: `${rect.left}px`, top: `${rect.bottom - 50}px` }; break;
+      case 'mouse':
+        matDialogConfig.position = { left: `${this.data.mouseCoords[0]}px`, top: `${this.data.mouseCoords[1]}px` }; break;
     }
 
-    if (this.data.anchorMode === 'mouse') {
-      matDialogConfig.position = { left: `${this.data.mouseCoords[0]}px`, top: `${this.data.mouseCoords[1]}px` };
-    }
-
-    this.dialogRef.updateSize(matDialogConfig.width, matDialogConfig.height);
+    this.dialogRef.updateSize('220px', '320px');
     this.dialogRef.updatePosition(matDialogConfig.position);
   }
+
 
   clickedCancel(): void {
     this.dialogRef.close(null);

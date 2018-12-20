@@ -15,29 +15,20 @@ export class AppComponent {
 
   constructor(public dialog: MatDialog) { }
 
-  /*
-    Below we are passing the clicked element as "trigger: target" to the dialog
-    component so it can know the correct anchor location to open the dialog.
-  */
   showDialog(event: MouseEvent): void {
-
     this.dialog.closeAll();
-    const mouseCoords = [event.x, event.y];
-    const target = new ElementRef(event.currentTarget);
-
     const dialogRef = this.dialog.open(MyDialogComponent, {
       data: {
-        anchorMode: this.selectedMode, // or anchor: element
-        mouseCoords: mouseCoords,
+        anchorMode: this.selectedMode,
+        mouseCoords: [event.x, event.y],
         email: this.email,
         name: this.name,
-        trigger: target
+        trigger: new ElementRef(event.currentTarget) // <--- clicked element
       },
       disableClose: true,
       hasBackdrop: false
     });
     dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
       this.email = res;
     });
   }
